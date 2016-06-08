@@ -1,0 +1,19 @@
+# Docs
+https://certbot.eff.org/docs/
+
+# set up cert bot
+apt-get install certbot || yum install certbot
+or
+git clone https://github.com/certbot/certbot
+cd certbot
+./certbot-auto
+
+# Obtain certs by placing files in a webroot directory.
+certbot certonly --webroot -w /www/a -d a.com,www.a.com -w /www/b -d b.com -d abc.b.com
+
+# Manually configure an HTTP server.
+certbot certonly --manual --manual-public-ip-logging-ok -d 1.com,www.1.com
+
+# Check all installed certificates for impending expiry and attempt to renew them.
+# --dry-run Optional: Obtaining test (invalid) certs but not saving them to disk.
+certbot renew --dry-run

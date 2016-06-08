@@ -1,0 +1,37 @@
+# Workflow for pull request at github
+# 1. Fork repo
+# 2. Clone new repo
+git clone git@github.com:username/repo.git
+
+# 3. Add remote from original repo for updates
+git remote add upstream git@github.com:username/repo.git
+git fetch upstream
+
+# 4. Make new branch "feature"
+git checkout -b feature
+
+# 5. Add you changes
+git add changed-files
+git commit -m "Comment"
+git push -u origin feature
+
+# 6. Go to GitHub choose branch "feature"
+# 7. Choose pull request
+# 8, Wait for approve from repo owner
+
+
+# 9. Get updates from upstream and push to your repo
+git checkout master
+git pull upstream master
+git push origin master
+
+# 10. if uostream was changed during you work, 
+# merge or rebase with you branch
+git checkout master
+git pull upstream master
+git checkout feature
+git rebase master or git merge master
+
+# 11. Remove branch feature from local and remote
+git branch -d feature
+git push origin :feature
