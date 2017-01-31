@@ -1,10 +1,8 @@
-from cheat import sheets 
-from cheat import utils
-from cheat.utils import *
 import os
 import shutil
-import subprocess
 
+from cheat import sheets
+from cheat.utils import die, open_with_editor
 
 def copy(current_sheet_path, new_sheet_path):
     """ Copies a sheet to a new path """
@@ -16,7 +14,7 @@ def copy(current_sheet_path, new_sheet_path):
     # fail gracefully if the cheatsheet cannot be copied. This can happen if
     # DEFAULT_CHEAT_DIR does not exist
     except IOError:
-        die ('Could not copy cheatsheet for editing.')
+        die('Could not copy cheatsheet for editing.')
 
 
 def create_or_edit(sheet):
@@ -40,22 +38,12 @@ def create_or_edit(sheet):
 def create(sheet):
     """ Creates a cheatsheet """
     new_sheet_path = os.path.join(sheets.default_path(), sheet)
-
-    try:
-        subprocess.call([editor(), new_sheet_path])
-
-    except OSError:
-        die('Could not launch ' + editor())
+    open_with_editor(new_sheet_path)
 
 
 def edit(sheet):
     """ Opens a cheatsheet for editing """
-
-    try:
-        subprocess.call([editor(), path(sheet)])
-
-    except OSError:
-        die('Could not launch ' + editor())
+    open_with_editor(path(sheet))
 
 
 def exists(sheet):
@@ -84,5 +72,5 @@ def read(sheet):
     if not exists(sheet):
         die('No cheatsheet found for ' + sheet)
 
-    with open (path(sheet)) as cheatfile:
-          return cheatfile.read()
+    with open(path(sheet)) as cheatfile:
+        return cheatfile.read()
