@@ -5,7 +5,7 @@ ncdu -o ncdu.file
 ncdu -f ncdu.file
 
 # Save results to compressed file 
-ncdu -o-| gzip > ncdu.file.gz
+ncdu -q -1o-| gzip > ncdu.file.gz
 
 # Read from compressed file
 zcat ncdu.file.gz | ncdu -f-

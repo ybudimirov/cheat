@@ -2,7 +2,7 @@
 https://certbot.eff.org/docs/
 
 # set up cert bot
-apt-get install certbot || yum install certbot
+apt-get install certbot || apt-get install python-letsencrypt-apache || yum install certbot
 or
 git clone https://github.com/certbot/certbot
 cd certbot
