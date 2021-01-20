@@ -20,4 +20,4 @@ kubectl options
 kubectl get all -A
 
 # Setup Kubectl autocomplete in bash(to use press Tab)
-source <(kubectl completion bash
+source <(kubectl completion bash)
